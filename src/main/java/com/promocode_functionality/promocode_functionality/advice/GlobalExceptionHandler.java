@@ -1,5 +1,6 @@
-package com.promocode_functionality.promocode_functionality.exceptions;
+package com.promocode_functionality.promocode_functionality.advice;
 
+import com.promocode_functionality.promocode_functionality.exceptions.CourseNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
