@@ -30,7 +30,7 @@ public class Users {
     private String password;
 
     @Column (name="notification_preference")
-    private String notification_preference;
+    private String notification_preferences;
 
     @Column (name="created_At")
     private LocalDateTime created_at;

@@ -30,7 +30,7 @@ public class Promocodes {
     private String status;
 
     @Column (name ="discountPercent",nullable=false)
-    private BigDecimal discountPercent;
+    private Integer discountPercent;
 
     @Column (name = "code_type")
     private String code_type;

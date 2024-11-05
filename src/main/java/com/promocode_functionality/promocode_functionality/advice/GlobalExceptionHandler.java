@@ -1,6 +1,6 @@
 package com.promocode_functionality.promocode_functionality.advice;
 
-import com.promocode_functionality.promocode_functionality.exceptions.CourseNotFoundException;
+import com.promocode_functionality.promocode_functionality.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -32,5 +32,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String>handleUserNotFoundException(UserNotFoundException ex){
+        return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidNotificationPreferenceException.class)
+    public ResponseEntity<String> handleInvalidNotificationPreference(InvalidNotificationPreferenceException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }
