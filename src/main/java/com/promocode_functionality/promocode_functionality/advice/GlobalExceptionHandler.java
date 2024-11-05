@@ -33,8 +33,8 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<String>handleUserNotFoundException(UserNotFoundException ex){
-        return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(InvalidNotificationPreferenceException.class)
@@ -42,4 +42,21 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    // Handle DuplicatePromoCodeException
+    @ExceptionHandler(DuplicatePromoCodeException.class)
+    public ResponseEntity<String> handleDuplicatePromoCodeException(DuplicatePromoCodeException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    }
+
+    // Handle InvalidPromoCodeException
+    @ExceptionHandler(InvalidPromocodeException.class)
+    public ResponseEntity<String> handleInvalidPromoCodeException(InvalidPromocodeException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // Handle PromoCodeNotFoundException
+    @ExceptionHandler(PromocodeNotFoundException.class)
+    public ResponseEntity<String> handlePromoCodeNotFoundException(PromocodeNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 }
