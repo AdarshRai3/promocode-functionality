@@ -97,6 +97,34 @@ public class PromocodesService {
         }
     }
 
+    public PromocodeResponse generatePromocode() {
+        Promocodes promocode = new Promocodes();
+        promocode.setCode(generateRandomCode(7));
+        promocode.setCode_type("Referral");
+        promocode.setGenerated_By("System");
+        promocode.setExpiry_date(LocalDateTime.now().plusDays(7));  
+        promocode.setStatus("Active");
+        promocode.setDiscountPercent(10);
+        promocode.setMaxUsageLimit(1);
+        promocode.setCreated_at(LocalDateTime.now());
+
+
+        promocodesRepository.save(promocode);
+
+        return mapToResponse(promocode);
+    }
+
+    private String generateRandomCode(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder code = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int index = (int) (characters.length() * Math.random());
+            code.append(characters.charAt(index));
+        }
+        return code.toString();
+    }
+
+
     private PromocodeResponse mapToResponse(Promocodes promocode) {
         PromocodeResponse response = new PromocodeResponse();
         response.setPromocodeId(promocode.getPromocode_id());

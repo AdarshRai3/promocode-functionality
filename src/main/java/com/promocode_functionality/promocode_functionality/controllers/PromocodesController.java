@@ -48,5 +48,10 @@ public class PromocodesController {
         return promocodesService.validatePromocode(code);
     }
 
+    @GetMapping("/generate")
+    @ResponseStatus(HttpStatus.CREATED)
+    public PromocodeResponse generatePromocode() {
+        return promocodesService.generatePromocode();
+    }
 }
 
