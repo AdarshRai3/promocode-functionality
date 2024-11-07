@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class Promocodes {
     @Column (name = "promocode_id")
     private Long promocode_id;
 
-    @Column (name ="code", nullable=false , unique = true ,length = 10)
+    @Column(name="code")
     private String code;
 
     @Column(name="expiry_date",nullable =false)
@@ -46,11 +47,13 @@ public class Promocodes {
     @Column (name="created_At")
     private LocalDateTime created_at;
 
+
     @PrePersist
     protected void createOn(){
         created_at=LocalDateTime.now();
     }
 
-    @OneToMany(mappedBy = "promocodes", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PromocodeUsage> usageRecords;
+    @OneToMany(mappedBy = "promocodesId")
+    private List<PromocodeUsage> promocodesUsages;
+
 }

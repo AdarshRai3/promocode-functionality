@@ -99,7 +99,7 @@ public class PromocodesService {
 
     public PromocodeResponse generatePromocode() {
         Promocodes promocode = new Promocodes();
-        promocode.setCode(generateRandomCode(7));
+        promocode.setCode(generateRandomCode(10));
         promocode.setCode_type("Referral");
         promocode.setGenerated_By("System");
         promocode.setExpiry_date(LocalDateTime.now().plusDays(7));  

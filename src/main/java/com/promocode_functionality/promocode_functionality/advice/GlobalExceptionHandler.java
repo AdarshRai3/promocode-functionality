@@ -59,4 +59,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlePromoCodeNotFoundException(PromocodeNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+    public ResponseEntity<String> handlePromocodeExpiredException(PromocodeExpiredException ex){
+        return new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
+    }
+
+    public ResponseEntity<String> handlePromocodeInactiveException( PromocodeInactiveException ex){
+        return new ResponseEntity<>(ex.getMessage(),HttpStatus.CONFLICT);
+    }
 }

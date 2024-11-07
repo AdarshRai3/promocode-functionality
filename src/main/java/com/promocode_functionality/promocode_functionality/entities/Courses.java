@@ -30,11 +30,11 @@ public class Courses {
     @Column(name = "column_description",nullable = false)
     private String course_description;
 
-    @OneToMany(mappedBy = "courses", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PromocodeUsage> promocodeUsages;
-
     @Column (name="created_At")
     private LocalDateTime created_at;
+
+    @OneToMany(mappedBy = "coursesId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PromocodeUsage> promocodeUsages;
 
     @PrePersist
     protected void createOn(){

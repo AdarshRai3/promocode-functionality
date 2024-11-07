@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,19 +18,22 @@ public class PromocodeUsage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usage_id")
-    private Long usage_id;
+    private Long usageId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="user_id" , nullable = false)
-    private Users users;
+    private Users usersId;
 
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="promocode_id",nullable=false)
-    private Promocodes promocodes;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="promocode_id", nullable=false)
+    private Promocodes promocodesId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="course_id",nullable =false)
-    private Courses courses;
+    private Courses coursesId;
+
+    @Column (name="code", nullable = false)
+    private String code;
 
     @Column (name = "status" , nullable =false)
     private String status;
@@ -51,5 +54,4 @@ public class PromocodeUsage {
     protected void onCreate(){
         created_At=LocalDateTime.now();
     }
-
 }

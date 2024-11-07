@@ -35,7 +35,7 @@ public class Users {
     @Column (name="created_At")
     private LocalDateTime created_at;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usersId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PromocodeUsage> promocodeUsages;
 
     @PrePersist
